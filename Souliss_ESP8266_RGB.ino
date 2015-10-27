@@ -35,14 +35,22 @@ uint8_t ip_gateway[4]  = {192, 168, 1, 1};
 
 //Define Souliss Slot
 #define LEDCONTROL        0
-#define LEDRED            1
+#define LEDBLUE            1
 #define LEDGREEN          2
-#define LEDBLUE           3
+#define LEDRED           3
 #define	LEDSTRIP1         4
 #define LEDWHITE1         5
 #define LEDSTRIP2         6
 #define LEDWHITE2         7
 
+// RGB FET
+#define PIN_red    12
+#define PIN_green  13
+#define PIN_blue   15
+
+// W FET
+#define PIN_w1     14
+#define PIN_w2     4
 
 
 void setup()
@@ -80,11 +88,11 @@ void loop()
 			Logic_DimmableLight(LEDWHITE2);
 
 			// Use the output values to control the PWM
-			analogWrite(12, mOutput(LEDRED) * 4);
-			analogWrite(13, mOutput(LEDGREEN) * 4);
-			analogWrite(15, mOutput(LEDBLUE) * 4);
-			analogWrite(14, mOutput(LEDWHITE1) * 4);
-			analogWrite(4, mOutput(LEDWHITE2) * 4);
+			analogWrite(PIN_red, mOutput(LEDRED) * 4);
+			analogWrite(PIN_green, mOutput(LEDGREEN) * 4);
+			analogWrite(PIN_blue, mOutput(LEDBLUE) * 4);
+			analogWrite(PIN_w1, mOutput(LEDWHITE1) * 4);
+			analogWrite(PIN_w2, mOutput(LEDWHITE2) * 4);
 
 			// Just process communication as fast as the logics
 			ProcessCommunication();
